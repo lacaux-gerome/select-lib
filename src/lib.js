@@ -35,18 +35,21 @@ export default function library(userOptions) {
 		this.options.items.forEach((item) => {
 			const optionHtml = [...item.querySelectorAll('option')];
 			let html = '',
-				selected = optionHtml[0].value;
+				label = '',
+				selected = optionHtml[0].textContent;
 			for (let i = 0; i < optionHtml.length; i++) {
 				html += `<li>${optionHtml[i].value}</li>`;
 				if (optionHtml[i].getAttribute('selected')) {
-					selected = optionHtml[i].value;
+					selected = optionHtml[i].textContent;
+				}
+				if (item.parentNode.querySelector('label') && item.previousElementSibling.nodeName === "LABEL") {
+					label = `<div>${item.previousElementSibling.textContent}</div>`;
 				}
 			}
-			let selectHtml = `<p>${selected}</p><div><ul>${html}</ul></div>`;
+			let selectHtml = `<div>${label}<p>${selected}</p><div><ul>${html}</ul></div></div>`;
 			let fragment = this.createDomSelect(selectHtml);
-			// You can use native DOM methods to insert the fragment:
-			console.log('item', item);
-			document.body.insertBefore(fragment, item);
+			let parentNode = item.parentNode;
+			parentNode.insertBefore(fragment, item);
 		});
 	};
 
@@ -63,4 +66,4 @@ export default function library(userOptions) {
 
 	initLibrary();
 	console.log('option zer', this.options);
-};
+	};
