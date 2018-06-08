@@ -38,13 +38,11 @@ export default function library(userOptions) {
 				label = '',
 				selected = optionHtml[0].textContent;
 			for (let i = 0; i < optionHtml.length; i++) {
-				html += `<li>${optionHtml[i].value}</li>`;
-				if (optionHtml[i].getAttribute('selected')) {
+				html += `<li data-value='${optionHtml[i].value}' >${optionHtml[i].textContent}</li>`;
+				if (item.parentNode.querySelector('label'))
+					label = this.hasLabel(item);
+				if (optionHtml[i].getAttribute('selected'))
 					selected = optionHtml[i].textContent;
-				}
-				if (item.parentNode.querySelector('label') && item.previousElementSibling.nodeName === "LABEL") {
-					label = `<div>${item.previousElementSibling.textContent}</div>`;
-				}
 			}
 			let selectHtml = `<div>${label}<p>${selected}</p><div><ul>${html}</ul></div></div>`;
 			let fragment = this.createDomSelect(selectHtml);
@@ -52,6 +50,21 @@ export default function library(userOptions) {
 			parentNode.insertBefore(fragment, item);
 		});
 	};
+
+	// return value of label if select has label attached with name and for
+	this.hasLabel = (item) => {
+		const labels = [...item.parentNode.querySelectorAll('label')];
+		let content;
+		labels.forEach((label) => {
+			if (label.getAttribute('for') === item.getAttribute('name') ) {
+				content = `<div>${label.textContent}</div>`;
+			}
+			else if (item.previousElementSibling.nodeName === "LABEL"){
+				content = `<div>${item.previousElementSibling.textContent}</div>`;
+			}
+		})
+		return content;
+	}
 
 	this.createDomSelect = (htmlStr) => {
 		let frag = document.createDocumentFragment(),
