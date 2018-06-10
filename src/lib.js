@@ -44,10 +44,19 @@ export default function library(userOptions) {
 				if (optionHtml[i].getAttribute('selected'))
 					selected = optionHtml[i].textContent;
 			}
-			let selectHtml = `<div>${label}<p>${selected}</p><div><ul>${html}</ul></div></div>`;
+			let selectHtml = `
+			<div class="tchapi-select">
+				<div class="tchapi-select__head">
+					${label}
+					<p class="tchapi-select__selected">${selected}</p>
+				</div>
+				<div> 
+					<ul>${html}</ul>
+				</div>
+			</div>`;
 			let fragment = this.createDomSelect(selectHtml);
 			let parentNode = item.parentNode;
-			parentNode.insertBefore(fragment, item);
+			parentNode.insertBefore(fragment, item); 
 		});
 	};
 
@@ -57,10 +66,10 @@ export default function library(userOptions) {
 		let content;
 		labels.forEach((label) => {
 			if (label.getAttribute('for') === item.getAttribute('name') ) {
-				content = `<div>${label.textContent}</div>`;
+				content = `<span class="tchapi-select__label">${label.textContent}</span>`;
 			}
 			else if (item.previousElementSibling.nodeName === "LABEL"){
-				content = `<div>${item.previousElementSibling.textContent}</div>`;
+				content = `<span class="tchapi-select__label">${item.previousElementSibling.textContent}</span>`;
 			}
 		})
 		return content;

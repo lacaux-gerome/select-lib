@@ -1,0 +1,40 @@
+.tchapi-select {
+    &__head {
+        position: relative;
+        &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            background-color: grey;
+        }
+        &:after {
+            content: '';
+            height: 1px;
+            background-color: red;
+            left: 50%;
+            bottom: 0;
+            width: 0;
+        }
+        &--active {
+            .tchapi-select__selected {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+    &__selected {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(-3px);
+        transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    &__label {
+        transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}
