@@ -1,93 +1,16 @@
 .tchapi-select {
-  // define colors variable
-  $grey-light: rgba(0, 0, 0, .12);
-  $blue : #3f51b5;
-  $roboto : 'Roboto', 'sans-serif';
-  $font-normal : $roboto;
-  $font-color : rgba(0,0,0,.87);
-  $box-shadow : 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
-
-  // Transition
-
-  $easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
-  $easeInCubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
-  $easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
-
-  //fonts
-  @font-face {
-    font-family: "Roboto";
-    src: url("/fonts/Roboto-Regular.ttf") format("truetype");
-    font-weight: 400;
-  }
-  @font-face {
-    font-family: "Roboto";
-    src: url("/fonts/Roboto-Medium.ttf") format("truetype");
-    font-weight: 500;
-  }
-  @font-face {
-    font-family: "Roboto";
-    src: url("/fonts/Roboto-Light.ttf") format("truetype");
-    font-weight: 300;
-  }
-  @font-face {
-    font-family: "Roboto";
-    src: url("/fonts/Roboto-Bold.ttf") format("truetype");
-    font-weight: 700;
-  }
-
-  font-family: $font-normal;
-  font-weight: 400;
-  font-size: 0.85rem;
   box-sizing: border-box;
   display: inline-block;
-  min-width: 150px;
-  color: $font-color;
-  &--activeSelected {
-    .tchapi-select {
-      &__label {
-        transform: translateY(-20px);
-      }
-      &__selected {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-  }
   &--active {
-    .tchapi-select {
-      &__selected {
-        opacity: 1;
-        visibility: visible;
-      }
-      &__head {
-        &:after {
-          width: 100%;
-          left: 0;
-        }
-      }
-      &__label {
-        color: $blue;
-        transform: translateY(-20px);
-        font-size: 12px;
-      }
-      &__menu {
-        box-shadow: $box-shadow;
-      }
+    .tchapi-select__selected {
+      opacity: 1;
+      visibility: visible;
     }
-  }
-  &__list {
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  &__item {
-    line-height: 3em;
-    height: 3em;
-    padding: 0 16px;
-    background-color: white;
-    &:hover {
-      background-color: rgba(0,0,0,.04);
+    .tchapi-select__head {
+      &:after {
+        width: 100%;
+        left: 0;
+      }
     }
   }
   &__head {
@@ -103,41 +26,32 @@
       bottom: 0;
       left: 0;
       height: 1px;
-      background-color: $grey-light;
+      background-color: grey;
     }
     &:after {
       content: '';
-      transition: 0.3s $easeInOutCubic;
-      position: absolute;
       height: 1px;
-      background-color: $blue;
+      background-color: red;
       left: 50%;
       bottom: 0;
       width: 0;
     }
   }
   &__selected {
-    padding-left: 4px;
     opacity: 0;
     visibility: hidden;
     transform: translateX(-3px);
-    transition: 0.3s $easeInOutCubic;
+    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
     margin: 0;
-    color: $font-color;
   }
   &__label {
-    color: $grey-light;
-    transition: 0.3s $easeInOutCubic;
+    transition: 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
     position: absolute;
-    bottom: 6px;
+    bottom: 8px;
     left: 0;
   }
   &__menu {
     overflow: hidden;
-    transition: 0.4s $easeInOutCubic;
-  }
-  &__menusize {
-    max-height: 250px;
-    overflow: auto;
+    transition: 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 }
