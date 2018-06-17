@@ -23,7 +23,7 @@ export default function library(userOptions) {
 		}
 	};
 
-	// recup item with selector
+	// get item with selector
 	this.initSelectors = () => {
 		if (Array.isArray(this.options.selector)) {
 			this.options.items = [...document.querySelectorAll([...this.options.selector])];
@@ -50,9 +50,9 @@ export default function library(userOptions) {
 					selected = optionHtml[i].textContent;
 			}
 			let selectHtml = `
-			<div class="tchapi-select">
+			<div class="tchapi-select ${label.class}">
 				<div class="tchapi-select__head">
-					${label}
+					${label.text}
 					<p class="tchapi-select__selected">${selected}</p>
 				</div>
 				<div class="tchapi-select__menu"> 
@@ -70,13 +70,15 @@ export default function library(userOptions) {
 	// return value of label if select has label attached with name and for
 	this.hasLabel = (item) => {
 		const labels = [...item.parentNode.querySelectorAll('label')];
-		let content;
+		let content = {};
 		labels.forEach((label) => {
 			if (label.getAttribute('for') === item.getAttribute('name')) {
-				content = `<span class="tchapi-select__label">${label.textContent}</span>`;
+				content.text = `<span class="tchapi-select__label">${label.textContent}</span>`;
+				content.class = 'tchapi-select--activeSelected';
 			}
 			else if (item.previousElementSibling.nodeName === 'LABEL') {
-				content = `<span class="tchapi-select__label">${item.previousElementSibling.textContent}</span>`;
+				content.text = `<span class="tchapi-select__label">${item.previousElementSibling.textContent}</span>`;
+				content.class = 'tchapi-select--activeSelected';
 			}
 		});
 		return content;
