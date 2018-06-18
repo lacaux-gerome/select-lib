@@ -43,11 +43,14 @@ export default function library(userOptions) {
 				label = '',
 				selected = optionHtml[0].textContent;
 			for (let i = 0; i < optionHtml.length; i++) {
+				let attachEvent = document.createElement('div');
+				attachEvent.addEventListener('click', this.changeSelected);
 				html += `<li class="tchapi-select__item" data-value='${optionHtml[i].value}' >${optionHtml[i].textContent}</li>`;
 				if (item.parentNode.querySelector('label'))
 					label = this.hasLabel(item);
 				if (optionHtml[i].getAttribute('selected'))
 					selected = optionHtml[i].textContent;
+
 			}
 			let selectHtml = `
 			<div class="tchapi-select">
@@ -124,6 +127,13 @@ export default function library(userOptions) {
 		else {
 			menu.style.height = '0px';
 		}
+	};
+
+	//
+
+	this.setSelected = (e) => {
+		e.preventDefault();
+		
 	};
 
 
