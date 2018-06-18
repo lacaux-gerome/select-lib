@@ -133,7 +133,7 @@ export default function library(userOptions) {
 
 	this.setSelected = (e) => {
 		e.preventDefault();
-		
+
 	};
 
 
