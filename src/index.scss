@@ -42,6 +42,7 @@
   display: inline-block;
   min-width: 150px;
   color: $font-color;
+  position: relative;
   &--activeSelected {
     .tchapi-select {
       &__label {
@@ -80,6 +81,7 @@
     padding: 0;
     margin: 0;
     list-style: none;
+
   }
   &__item {
     line-height: 3em;
@@ -87,6 +89,9 @@
     padding: 0 16px;
     background-color: white;
     &:hover {
+      background-color: rgba(0,0,0,.04);
+    }
+    &--active {
       background-color: rgba(0,0,0,.04);
     }
   }
@@ -135,9 +140,19 @@
   &__menu {
     overflow: hidden;
     transition: 0.4s $easeInOutCubic;
+    width: 100%;
+    position: absolute;
   }
-  &__menusize {
+  &__menuSize {
     max-height: 250px;
     overflow: auto;
+  }
+  &__nativeSelect {
+    &--inactive {
+      visibility: hidden;
+      opacity: 0;
+      height: 0;
+      position: absolute;
+    }
   }
 }
