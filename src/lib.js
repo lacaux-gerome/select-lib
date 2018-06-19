@@ -23,6 +23,12 @@ export default function library(userOptions) {
 		}
 	};
 
+	// hide native select
+	this.removeNativeSelect = (label, select) => {
+		label.dom.classList.add('tchapi-select__nativeSelect--inactive');
+		select.classList.add('tchapi-select__nativeSelect--inactive');
+	};
+
 	// get item with selector
 	this.initSelectors = () => {
 		if (Array.isArray(this.options.selector)) {
@@ -43,14 +49,13 @@ export default function library(userOptions) {
 				label = '',
 				selected = optionHtml[0].textContent;
 			for (let i = 0; i < optionHtml.length; i++) {
-				let attachEvent = document.createElement('div');
-				attachEvent.addEventListener('click', this.changeSelected);
 				html += `<li class="tchapi-select__item" data-value='${optionHtml[i].value}' >${optionHtml[i].textContent}</li>`;
-				if (item.parentNode.querySelector('label'))
+				if (item.parentNode.querySelector('label') && label === '') {
 					label = this.hasLabel(item);
+				}
 				if (optionHtml[i].getAttribute('selected'))
 					selected = optionHtml[i].textContent;
-
+				this.removeNativeSelect(label, item);
 			}
 			let selectHtml = `
 			<div class="tchapi-select ${label.class}">
@@ -75,6 +80,7 @@ export default function library(userOptions) {
 		const labels = [...item.parentNode.querySelectorAll('label')];
 		let content = {};
 		labels.forEach((label) => {
+			content.dom = label;
 			if (label.getAttribute('for') === item.getAttribute('name')) {
 				content.text = `<span class="tchapi-select__label">${label.textContent}</span>`;
 				content.class = 'tchapi-select--activeSelected';
@@ -131,14 +137,34 @@ export default function library(userOptions) {
 		}
 	};
 
-	//
+	// on click set textContent of select equal at the textContent of item clicked
+	this.setSelected = () => {
+		const listItem = [...document.querySelectorAll('.tchapi-select__item')];
+		listItem.forEach((item) => {
+			item.addEventListener('click', () => {
+				this.setClassSelect(listItem, item);
+				let select = item.closest('.tchapi-select').querySelector('.tchapi-select__selected');
+				select.textContent = item.textContent;
+			});
+		});
+	};
 
-	this.setSelected = (e) => {
-		e.preventDefault();
+	// remove all active class and add add active on clicked list item
 
+	this.setClassSelect = (arrayListItem, item) => {
+		for (let i = 0; i < arrayListItem.length; i++) {
+			arrayListItem[i].classList.remove('tchapi-select__item--active');
+		}
+		item.classList.add('tchapi-select__item--active');
 	};
 
 
+	const initEvents = () => {
+		this.setSelected();
+	};
+
 	initLibrary();
+	initEvents();
+
 	console.log('option zer', this.options);
 };

@@ -1,0 +1,87 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js start
+
+PATH: 
+  C:\Users\MSI\Desktop\cmder\bin;C:\Users\MSI\Desktop\cmder\vendor\conemu-maximus5\ConEmu\Scripts;C:\Users\MSI\Desktop\cmder\vendor\conemu-maximus5;C:\Users\MSI\Desktop\cmder\vendor\conemu-maximus5\ConEmu;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;D:\MAMP\bin\php\php7.0.9;C:\ProgramData\ComposerSetup\binC:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\ProgramData\chocolatey\bin;C:\Gradle\gradle-4.4.1\bin;C:\Users\MSI\AppData\Local\Android\sdk\platform-tools;C:\Users\MSI\AppData\Local\Android\sdk\tools;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\WINDOWS\System32\OpenSSH\;C:\Ruby24-x64\bin;C:\Ruby23-x64\bin;C:\Users\MSI\Miniconda3;C:\Users\MSI\Miniconda3\Scripts;C:\Users\MSI\Miniconda3\Library\bin;C:\Users\MSI\AppData\Local\Microsoft\WindowsApps;C:\Users\MSI\AppData\Roaming\Composer\vendor\bin;C:\Users\MSI\AppData\Local\.meteor;C:\Program Files\Microsoft VS Code\bin;C:\Users\MSI\AppData\Local\Yarn\bin;C:\Users\MSI\AppData\Roaming\npm;C:\Users\MSI\Desktop\php;;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;C:\Users\MSI\Desktop\cmder\
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.11.2
+
+Platform: 
+  win32 x64
+
+npm manifest: 
+  {
+    "name": "webpack-es6-boilerplate",
+    "version": "1.0.1",
+    "author": "Joseph Luccisano <joseph.luccisano@gmail.com> (https://jluccisano.github.io)",
+    "description": "A delightfully Webpack ES6 Boilerplate",
+    "license": "MIT",
+    "keywords": [
+      "webpack",
+      "boilerplate",
+      "es6",
+      "babel",
+      "jest",
+      "sass"
+    ],
+    "bugs": {
+      "url": "https://github.com/jluccisano/webpack-es6-boilerplate/issues",
+      "email": "joseph.luccisano@gmail.com"
+    },
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/jluccisano/webpack-es6-boilerplate.git"
+    },
+    "main": "src/index.js",
+    "scripts": {
+      "start": "webpack-dev-server --config conf/webpack.dev.js",
+      "build": "webpack --env=prod --progress --profile --colors",
+      "coverage": "jest --coverage --config=conf/jest.config.js",
+      "test": "jest --config=conf/jest.config.js",
+      "test:watch": "jest --watch"
+    },
+    "devDependencies": {
+      "babel-core": "6.26.0",
+      "babel-jest": "20.0.3",
+      "babel-loader": "7.1.2",
+      "babel-preset-env": "1.6.0",
+      "clean-webpack-plugin": "0.1.16",
+      "css-loader": "^0.28.5",
+      "extract-text-webpack-plugin": "3.0.0",
+      "html-webpack-plugin": "2.30.1",
+      "jest": "20.0.4",
+      "node-sass": "4.5.3",
+      "sass-loader": "6.0.6",
+      "style-loader": "^0.18.2",
+      "webpack": "3.5.5",
+      "webpack-dev-server": "2.7.1",
+      "webpack-merge": "4.1.0"
+    },
+    "dependencies": {}
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Command failed.
+  Exit code: 3221225786
+  Command: C:\WINDOWS\system32\cmd.exe
+  Arguments: /d /s /c webpack-dev-server --config conf/webpack.dev.js
+  Directory: C:\Users\MSI\Desktop\select-lib
+  Output:
+  
+      at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
+      at new ProcessTermError (C:\Program Files (x86)\Yarn\lib\cli.js:226:113)
+      at ChildProcess.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
+      at emitTwo (events.js:126:13)
+      at ChildProcess.emit (events.js:214:7)
+      at maybeClose (internal/child_process.js:925:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
